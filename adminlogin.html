@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/simplex/bootstrap.min.css">
+    <title>Admin Portal</title>
+  </head>
+
+  <body class="bg-light">
+    <script>
+        function set_alert(txt, color) {
+          var result = '<div class="alert mb-0 alert-'+color+'">'+txt+'</div>';
+          $("#result").html(result);
+          $("#result").fadeIn();
+        }
+
+        function authenticate() {
+          $("#result").fadeOut("fast");
+
+          var entered_username = $("#username").val();
+          var entered_password = $("#password").val();
+
+          if (entered_username == "admin" && entered_password == "TrainCTF{inspect1ng_th3_c0de}") {
+              set_alert("Login successful! Flag: <code>" + entered_password + "</code>", "success");
+          } else {
+              set_alert("Login failed! Please try again.", "primary");
+          }
+        }
+    </script>
+    <div class="container">
+      <div class="col-md-6 offset-md-3 col-lg-4 offset-lg-4 mt-5 py-4 px-3 border border-2 rounded">
+        <h1 class="text-center mb-4">Admin Portal</h1>
+
+        <form class="form-inline" action="javascript:authenticate()">
+          <div class="form-group">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" name="username" id="username" placeholder="Enter username" value="" required>
+              <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+              <label for="floatingPassword">Password</label>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn btn-primary mt-4" type="submit">Log in</button>
+          </div>
+        </form>
+
+        <div id="result" class="mt-4" style="display:none;"></div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
